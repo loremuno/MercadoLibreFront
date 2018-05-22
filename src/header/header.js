@@ -16,7 +16,6 @@ class Header extends React.Component {
     state = {
         query: 'asd',
     }
-
     search = () => {
         fetch("http://localhost:4000/api/items?q=" + this.state.query, sentData)
             .then(res => res.json())

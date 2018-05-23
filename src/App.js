@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import Header from '../src/header/header';
+import Body from '../src/body/body';
 import './App.css';
 
 const routes = [
@@ -37,7 +38,11 @@ const RouteWithSubRoutes = route => (
 );
 
 const RouteConfigExample = () => (
-  <Header></Header>
+  <div id="page">
+    <Header></Header>
+    <Body></Body>
+    <footer/>
+  </div>
   // <Router>
   //   <div>
   //     <ul>

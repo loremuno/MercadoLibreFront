@@ -4,15 +4,90 @@
   font-family: sans-serif;
   font-weight: 100;
 }
-header{
-  display:grid;
+#page {
+  display: grid;
+  width: 100%;
   grid-template-columns: 1fr minmax(50px, 1fr) repeat(10, 1fr);
-  grid-gap: 16px;  
+  grid-column-gap: 16px;  
+  height: 100vh;                 
+}
+
+header {
+  display:inherit;
+  grid-column-gap: inherit;
   background-color: #ffe600;
   grid-column: 1 / 13  ;
   height: 50px;
-  padding: 10px;
+  padding: 10px 0px;
   box-sizing: border-box;
+}
+
+main{
+  grid-column: 2 / 12;
+  box-sizing: border-box;
+  background-color: #EEEEEE;
+  grid-template-columns: inherit;
+  height: 100vh;
+}
+hr{
+  margin: 0px 16px;
+  color: #EEEEEE4D;
+}
+
+main .categoria{
+  height: 14px;
+  grid-column: 1 / 13;
+  padding-top: 16px;
+  color: #666;
+  font-size: 14px;
+  padding-bottom: 16px;
+}
+.contenedor{
+  background-color: white;
+  border-radius: 4px;
+}
+
+main .items{
+  height: 180px;
+  padding-bottom: 16px;
+  padding-top: 16px;
+  padding-left: 16px;
+  display: grid;
+  grid-template: "a b c" 180px / 180px;
+  color: #666;
+  font-size: 14px;
+  font-family: "Proxima Nova";
+}
+main .contenedorImagen{
+  grid-area: a;
+  width: 180px;
+  height: 180px;
+}
+main .imagen{
+  border-radius: 4px;
+  width: 180px;
+  height: 180px;
+  display: inline-block;
+  background: url(./assets/descarga.jpg) no-repeat left;
+  background-size: contain;
+}
+main .contenedorDescripcion{
+  grid-area: b;
+  background-color: yellow;
+  margin-left: 16px
+}
+main .contenedorUbicacion{
+  grid-area: c;
+}
+
+
+
+@font-face { 
+  font-family: "Proxima Nova"; 
+  font-style: normal;
+  font-weight: 400; 
+  src: url("https://http2.mlstatic.com/ui/webfonts/v4.0.0/proxima-nova/proxima-nova-400.eot?#iefix") format("embedded-opentype"), url("https://http2.mlstatic.com/ui/webfonts/v4.0.0/proxima-nova/proxima-nova-400.woff2") format("woff2"), url("https://http2.mlstatic.com/ui/webfonts/v4.0.0/proxima-nova/proxima-nova-400.woff") format("woff"), url("https://http2.mlstatic.com/ui/webfonts/v4.0.0/proxima-nova/proxima-nova-400.ttf") format("truetype");
+  font-display: swap; 
 }
 
 header div{
@@ -20,7 +95,7 @@ header div{
   /* background-color: red ; */
   height: 100%;
   grid-column: 2 / 3;
-  background: url(./assets/Logo_ML.png) no-repeat center;
+  background: url(./assets/Logo_ML.png) no-repeat left;
   background-size: contain;
 }
 header input{
@@ -29,22 +104,27 @@ header input{
   border: none;
   border-radius: 3px;
   text-indent: 10px;
-  font-size: 14px
+  font-size: 14px;
+  margin-left: -16px;
 }
 
 input::placeholder{
   color: #666
 }
 
-button{
+header button{
+  margin-left: -46px;  
   height: 100%;
   width: 30px;
   grid-column-end: 13;
-  margin-left: -46px;
   border: none;
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px;
   background: #eee url(./assets/ic_Search.png) no-repeat center;
   background-size: 50%;
 
+}
+
+body{
+  background-color: #EEEEEE;
 }

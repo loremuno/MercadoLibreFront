@@ -33,7 +33,7 @@ class Header extends React.Component {
         return (
             <header>
                 <div></div>
-                <input type="text" placeholder="Nunca dejes de buscar..." />
+                <input type="text" placeholder="Nunca dejes de buscar" />
                 <button></button>
             </header>
             // <div className="wrapper">

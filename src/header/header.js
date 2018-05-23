@@ -1,23 +1,15 @@
 import React from "react";
-
-let header = new Headers({
-    'Access-Control-Allow-Origin': '*',
-});
-
-let sentData = {
-    method: 'GET',
-    mode: 'cors',
-    header: header,
-    cache: 'default',
-};
+import { getItems } from '../services/apiservices';
 
 class Header extends React.Component {
 
     state = {
-        query: 'asd',
+        query: '',
+        loading: false,
     }
+
     search = () => {
-        fetch("http://localhost:4000/api/items?q=" + this.state.query, sentData)
+        getItems(this.state.query)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -39,20 +31,27 @@ class Header extends React.Component {
 
     render() {
         return (
-            <div className="wrapper">
-                <div className="seven">
-                    <div className="centerDiv searchDiv">
-                        <div className="mlIcon"><i></i></div>
-                        <input value={this.state.query} onChange={(event) => {
-                            console.log(event.target.value)
-                            this.setState({
-                                query: event.target.value
-                            })
-                        }} className="searchInput" placeholder="Nunca dejes de buscar" />
-                        <button onClick={this.search} className="searchButton"><i className=""></i></button>
-                    </div>
-                </div>
-            </div>
+            <header>
+                <div></div>
+                <input type="text" placeholder="Nunca dejes de buscar..." />
+                <button></button>
+            </header>
+            // <div className="wrapper">
+            //     <div className="seven">
+            //         <div className="centerDiv searchDiv">
+            //             <div className="mlIcon"><i></i></div>
+            //             <input value={this.state.query} onChange={(event) => {
+            //                 console.log(event.target.value)
+            //                 this.setState({
+            //                     query: event.target.value
+            //                 })
+            //             }} className="searchInput" placeholder="Nunca dejes de buscar" />
+            //             <button onClick={this.search} className="searchButton"><i className=""></i></button>
+            //         </div>
+            //     </div>
+            //     <div className="loadingScreen"><div className="loader"></div></div>
+            // </div>
+
         );
     }
 }

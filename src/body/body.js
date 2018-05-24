@@ -1,4 +1,7 @@
 import React from "react";
+import Categoria from '../categoria/categoria';
+import Items from '../items/items';
+import Item from '../item/item';
 
 class Body extends React.Component {
 
@@ -10,74 +13,9 @@ class Body extends React.Component {
     render() {
         return (
             <main>
-                <div className="categoria">
-                    Electrónica, Audio y Video > iPod > Reproductores > iPod touch > 32 GB
-                </div>
-                <div className="contenedor">
-                    <div className="items">
-                        <div className="contenedorImagen">
-                            <div className="imagen">
-
-                            </div>
-                        </div>
-                        <div className="contenedorDescripcion">
-                            <p>$1980</p>
-                            <p>Apple Ipod Touch 5 GB ....</p>
-                            <p>Completo Unico!</p>
-                        </div>
-                        <div className="contenedorUbicacion">
-                            <p>Capital Federal</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="items">
-                        <div className="contenedorImagen">
-                            <div className="imagen">
-
-                            </div>
-                        </div>
-                        <div className="contenedorDescripcion">
-                            <p>$1980</p>
-                            <p>Apple Ipod Touch 5 GB ....</p>
-                            <p>Completo Unico!</p>
-                        </div>
-                        <div className="contenedorUbicacion">
-                            <p>Capital Federal</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="items">
-                        <div className="contenedorImagen">
-                            <div className="imagen">
-
-                            </div>
-                        </div>
-                        <div className="contenedorDescripcion">
-                            <p>$1980</p>
-                            <p>Apple Ipod Touch 5 GB ....</p>
-                            <p>Completo Unico!</p>
-                        </div>
-                        <div className="contenedorUbicacion">
-                            <p>Capital Federal</p>
-                        </div>
-                    </div>
-                    <hr />
-                    <div className="items">
-                        <div className="contenedorImagen">
-                            <div className="imagen">
-
-                            </div>
-                        </div>
-                        <div className="contenedorDescripcion">
-                            <p>$1980</p>
-                            <p>Apple Ipod Touch 5 GB ....</p>
-                            <p>Completo Unico!</p>
-                        </div>
-                        <div className="contenedorUbicacion">
-                            <p>Capital Federal</p>
-                        </div>
-                    </div>
-                </div>
+                <Categoria></Categoria>
+                {/* <Items></Items> */}
+                <Item></Item>
             </main>
         );
     }

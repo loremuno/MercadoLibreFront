@@ -4,6 +4,9 @@
   font-family: sans-serif;
   font-weight: 100;
 }
+button{
+  cursor: pointer;
+}
 #page {
   display: grid;
   width: 100%;
@@ -53,11 +56,12 @@ main .items{
   padding-top: 16px;
   padding-left: 16px;
   display: grid;
-  grid-template: "a b c" 180px / 180px;
+  grid-template: "a b c" 180px / 180px auto auto;
   color: #666;
   font-size: 14px;
   font-family: "Proxima Nova";
 }
+
 main .contenedorImagen{
   grid-area: a;
   width: 180px;
@@ -73,11 +77,11 @@ main .imagen{
 }
 main .contenedorDescripcion{
   grid-area: b;
-  background-color: yellow;
   margin-left: 16px
 }
 main .contenedorUbicacion{
   grid-area: c;
+  margin-left: 16px;
 }
 
 
@@ -127,4 +131,98 @@ header button{
 
 body{
   background-color: #EEEEEE;
+}
+
+.contenedorDescripcion .precio{
+  font-size:24px;
+  margin-bottom:32px;
+  margin-top: 16px;
+  color: #333333;
+}
+.contenedorDescripcion .descripcion{
+  font-size:18px;
+  color: #333333;
+}
+
+.contenedorDescripcion .imagen{
+  display: inline-block;
+  background: url(./assets/ic_shipping.png) no-repeat left;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+}
+
+.contenedorUbicacion p{
+  font-size:12px;
+  color: #999999;
+  margin-top: 30px;
+  margin-right: 45px;
+}
+
+
+/*item unico*/
+main .item{
+  height: 100vh;
+  display: grid;
+  grid-template: "a b" 680px 
+                 "c b" auto / minmax(680px,75%) ;
+  font-family: "Proxima Nova";
+}
+.item .contenedorImagenItem{
+  grid-area: a;
+}
+.item .contenedorImagenItem .imagen{
+  display: inline-block;
+  background: url(./assets/descarga.jpg) no-repeat left;
+  background-size: contain;
+  width: 680px;
+  height: 680px;
+}
+.item .contenedorInfoItem{
+  grid-area: b;
+  margin-left: 16px;
+  margin-top: 32px;
+  margin-right: 32px;
+}
+.item .contenedorInfoItem button{
+  background-color: #3483FA;
+  border-radius: 4px;
+  border: none;
+  width: 100%;
+  height: 35px;
+  color: white;
+}
+.item .contenedorInfoItem .precio{
+  margin-top: 32px;
+  margin-bottom: 32px;
+  font-size: 46px;
+}
+.item .contenedorInfoItem .condicion{
+  margin-bottom: 16px;
+  font-size: 14px;
+}
+.item .contenedorInfoItem .titulo{
+  font-size: 24px;
+}
+/* .item .contenedorInfoItem .imagen{
+  display: inline-block;
+  background: url(./assets/ic_shipping.png) no-repeat left;
+  background-size: contain;
+  width: 16px;
+  height: 16px;
+  margin-left: 10px;
+} */
+.item .contenedorDescripcionItem{
+  grid-area: c;
+  margin-left: 32px;
+  margin-top: 32px;
+  margin-bottom: 32px;
+}
+.item .contenedorDescripcionItem p{
+  font-size: 16px;
+}
+.item .contenedorDescripcionItem .titulo{
+  font-size: 28px;
+  margin-bottom: 32px;
 }

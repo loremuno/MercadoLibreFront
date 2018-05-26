@@ -1,28 +1,24 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import BodyItem from '../src/bodyItem/bodyItem';
+import BodyItems from '../src/bodyItems/bodyItems';
 import Header from '../src/header/header';
-import Body from '../src/body/body';
+import Home from '../src/home/home';
 import './App.css';
 
 const routes = [
   {
-    path: "/header",
-    component: Header
+    path: "/",
+    component: Home
   },
-  // {
-  //   path: "/tacos",
-  //   component: Tacos,
-  //   routes: [
-  //     {
-  //       path: "/tacos/bus",
-  //       component: Bus
-  //     },
-  //     {
-  //       path: "/tacos/cart",
-  //       component: Cart
-  //     }
-  //   ]
-  // }
+  {
+    path: "/items/:id",
+    component: BodyItem
+  },
+  {
+    path: "/items",
+    component: BodyItems
+  }
 ];
 
 // wrap <Route> and use this everywhere instead, then when
@@ -38,22 +34,12 @@ const RouteWithSubRoutes = route => (
 );
 
 const RouteConfigExample = () => (
-  <div id="page">
-    <Header></Header>
-    <Body></Body>
-    <footer/>
-  </div>
-  // <Router>
-  //   <div>
-  //     <ul>
-  //       <li>
-  //         <Link to="/header">Aboutyy</Link>
-  //       </li>
-  //     </ul>
-
-  //     {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
-  //   </div>
-  // </Router>
+  <Router>
+    <div id="page">
+      <Header></Header>
+      {routes.map((route, i) => <RouteWithSubRoutes key={i} {...route} />)}
+    </div>
+  </Router>
 );
 
 export default RouteConfigExample;

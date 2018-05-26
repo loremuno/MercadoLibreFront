@@ -1,24 +1,20 @@
 import React from "react";
 import Categoria from '../categoria/categoria';
-import Items from '../items/items';
 import Item from '../item/item';
 
-class Body extends React.Component {
-
-    state = {
-        query: '',
-        loading: false,
+class BodyItem extends React.Component {
+    componentDidMount() {
+        const { id } = this.props.match.params
+        console.log('​BodyItem -> componentDidMount -> handle', id);
     }
-
     render() {
         return (
             <main>
                 <Categoria></Categoria>
-                {/* <Items></Items> */}
                 <Item></Item>
             </main>
         );
     }
 }
 
-export default Body;
+export default BodyItem;

@@ -2,74 +2,42 @@ import React from "react";
 
 class Items extends React.Component {
 
+    componentWillReceiveProps(props) {
+        console.log('​Items -> componentWillReceiveProps -> props', props);
+        this.setState({
+            items: props.items,
+        })
+    }
+
     state = {
-        query: '',
         loading: false,
+        items: null,
     }
 
     render() {
         return (
             <div className="contenedor">
-                <div className="items">
-                    <div className="contenedorImagen">
-                        <div className="imagen">
+                {this.state.items && this.state.items.map(function (item, i) {
+                    return (
+                        <div key={item.id} className="items">
+                            <div className="contenedorImagen">
+                                <div className="imagen" style={{ background: "url(" + item.picture + ")no-repeat left", backgroundSize: "contain" }}>
 
-                        </div>
-                    </div>
-                    <div className="contenedorDescripcion">
-                        <p className="precio">$1980<div className="imagen"></div></p>
-                        <p className="descripcion">Apple Ipod Touch 5g 16gb Negro igual A Nuevo Completo Unico!</p>
-                    </div>
-                    <div className="contenedorUbicacion">
-                        <p>Capital Federal</p>
-                    </div>
-                </div>
-                <hr />
-                <div className="items">
-                    <div className="contenedorImagen">
-                        <div className="imagen">
-
-                        </div>
-                    </div>
-                    <div className="contenedorDescripcion">
-                        <p className="precio">$1980<div className="imagen"></div></p>
-                        <p className="descripcion">Apple Ipod Touch 5g 16gb Negro igual A Nuevo Completo Unico!</p>
-                    </div>
-                    <div className="contenedorUbicacion">
-                        <p>Capital Federal</p>
-                    </div>
-                </div>
-                <hr />
-                <div className="items">
-                    <div className="contenedorImagen">
-                        <div className="imagen">
-
-                        </div>
-                    </div>
-                    <div className="contenedorDescripcion">
-                        <p className="precio">$1980<div className="imagen"></div></p>
-                        <p className="descripcion">Apple Ipod Touch 5g 16gb Negro igual A Nuevo Completo Unico!</p>
-                    </div>
-                    <div className="contenedorUbicacion">
-                        <p>Capital Federal</p>
-                    </div>
-                </div>
-                <hr />
-                <div className="items">
-                    <div className="contenedorImagen">
-                        <div className="imagen">
-
-                        </div>
-                    </div>
-                    <div className="contenedorDescripcion">
-                        <p className="precio">$1980<div className="imagen"></div></p>
-                        <p className="descripcion">Apple Ipod Touch 5g 16gb Negro igual A Nuevo Completo Unico!</p>
-                    </div>
-                    <div className="contenedorUbicacion">
-                        <p>Capital Federal</p>
-                    </div>
-                </div>
-                <hr />
+                                </div>
+                            </div>
+                            <div className="contenedorDescripcion">
+                                <p className="precio">{"$" + item.price.amount}
+                                    {item.free_shipping &&
+                                        <i className="imagen"></i>
+                                    }
+                                </p>
+                                <p className="descripcion">{item.title}</p>
+                            </div>
+                            <div className="contenedorUbicacion">
+                                <p>Capital Federal</p>
+                            </div>
+                        </div>)
+                })}
             </div>
         );
     }

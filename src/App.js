@@ -1,10 +1,9 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import Item from '../src/item/item';
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import BodyItems from '../src/bodyItems/bodyItems';
+import BodyItem from '../src/bodyItem/bodyItem';
 import Header from '../src/header/header';
 import Home from '../src/home/home';
-import './App.css';
 
 const routes = [
   {
@@ -13,12 +12,12 @@ const routes = [
   },
   {
     path: "/items/:id",
-    component: BodyItems,
+    component: BodyItem,
   },
   {
     path: "/items",
     component: BodyItems
-  }
+  },
 ];
 
 // wrap <Route> and use this everywhere instead, then when

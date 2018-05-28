@@ -1,9 +1,7 @@
 import React from "react";
 import Categoria from '../categoria/categoria';
 import Items from '../items/items';
-import Item from '../item/item';
 import { getItems } from '../services/apiservices';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class BodyItems extends React.Component {
 
@@ -23,17 +21,21 @@ class BodyItems extends React.Component {
     }
 
     cargarComponentes() {
-        const { id } = this.props.match.params
-        if (id) {
-            this.setState({
-                id: id
-            })
-        }
-        else {
+        this.setState({
+            isLoaded: false,
+            id: null,
+        });
+        console.log(this.props.history.location.pathname.substring('/items/'.length));
+        if (this.props.history.location.search) {
             const search = this.props.history.location.search.substring('?search='.length);
             if (search) {
                 this.search(decodeURI(search));
             }
+        }
+        if (this.props.location.pathname.substring('/items/'.length) !== "") {
+            this.setState({
+                id: this.props.location.pathname.substring('/items/'.length),
+            })
         }
     }
 
@@ -51,6 +53,7 @@ class BodyItems extends React.Component {
                     let arreglo = [];
                     for (let index = 1; index <= 4; index++) {
                         let item = result.items[Math.floor(Math.random() * result.items.length)];
+                        item.precioFormat = item.price.amount.toLocaleString('es-ar', { style: 'decimal', decimal: item.price.decimals });
                         arreglo.push(item);
                     }
                     this.setState({
@@ -70,20 +73,12 @@ class BodyItems extends React.Component {
     }
 
     render() {
-        const { items, id, isLoaded } = this.state;
         return (
             <main>
                 <Categoria categories={this.state.categories}></Categoria>
+                <Items items={this.state.items}></Items>
                 {
-                    !id &&
-                    <Items items={items}></Items>
-                }
-                {
-                    id &&
-                    <Item></Item>
-                }
-                {
-                    !isLoaded && !id &&
+                    !this.state.isLoaded && !this.state.id &&
                     <div className="loadingScreen"><div className="loader"></div></div>
                 }
             </main>

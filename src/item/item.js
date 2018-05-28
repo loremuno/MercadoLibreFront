@@ -9,8 +9,9 @@ class Item extends React.Component {
         categories: null,
     }
 
-    componentDidMount(props) {
-        console.log('​Item -> componentDidMount -> props', props);
+    componentDidMount() {
+        let id = this.props.id;
+        this.search(id);
     }
 
     search = (id) => {
@@ -20,9 +21,10 @@ class Item extends React.Component {
         getItem(id)
             .then(
                 (result) => {
-                    console.log('​Header -> search -> result', result);
+                    result.item.precioFormat = result.item.price.amount.toLocaleString('es-ar', { style: 'decimal', decimal: result.item.price.decimals });
                     this.setState({
-                        item: result,
+                        item: result.item,
+                        isLoaded: true,
                     });
                 },
                 (error) => {
@@ -38,23 +40,34 @@ class Item extends React.Component {
     render() {
         return (
             <div className="contenedor">
-                <div className="item">
-                    <div className="contenedorImagenItem">
-                        <div className="imagen">
-
+                {this.state.item &&
+                    <div className="item">
+                        <div className="contenedorImagenItem">
+                            <div className="imagen" style={{ background: "url(" + this.state.item.picture + ")no-repeat left", backgroundSize: "contain" }}></div>
+                        </div>
+                        <div className="contenedorInfoItem">
+                            {
+                                this.state.item.condition === "new" &&
+                                <p className="condicion"> Nuevo - 234 vendidos</p>
+                            }
+                            {
+                                this.state.item.condition !== "new" &&
+                                <p className="condicion"> Usado - 3 vendidos</p>
+                            }
+                            <p className="titulo"><b>{this.state.item.title}</b></p>
+                            <p className="precio">${this.state.item.precioFormat}</p>
+                            <button>Comprar</button>
+                        </div>
+                        <div className="contenedorDescripcionItem">
+                            <p className="titulo">Descripción del producto</p>
+                            <p>{this.state.item.description}</p>
                         </div>
                     </div>
-                    <div className="contenedorInfoItem">
-                        <p className="condicion">Nuevo - 234 vendidos</p>
-                        <p className="titulo"><b>Deco Reverse Sombrero Oxford</b></p>
-                        <p className="precio">$1980</p>
-                        <button>Comprar</button>
-                    </div>
-                    <div className="contenedorDescripcionItem">
-                        <p className="titulo">Titulo descripcion</p>
-                        <p>Lorem Ipsum es simplemente el texto de relleno de las imprentas y archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de las industrias desde el año 1500, cuando un impresor (N. del T. persona que se dedica a la imprenta) desconocido usó una galería de textos y los mezcló de tal manera que logró hacer un libro de textos especimen. No sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno en documentos electrónicos, quedando esencialmente igual al original. Fue popularizado en los 60s con la creación de las hojas "Letraset", las cuales contenian pasajes de Lorem Ipsum, y más recientemente con software de autoedición, como por ejemplo Aldus PageMaker, el cual incluye versiones de Lorem Ipsum.</p>
-                    </div>
-                </div>
+                }
+                {
+                    !this.state.isLoaded &&
+                    <div className="loadingScreen"><div className="loader"></div></div>
+                }
             </div>
         );
     }

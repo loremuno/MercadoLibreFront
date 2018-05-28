@@ -1,16 +1,16 @@
 import React from "react";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Items extends React.Component {
 
     componentWillReceiveProps(props) {
         this.setState({
             items: props.items,
+            isLoaded: true,
         })
     }
 
     state = {
-        loading: false,
+        isLoaded: false,
         items: null,
     }
 
@@ -19,14 +19,14 @@ class Items extends React.Component {
             <div className="contenedor">
                 {this.state.items && this.state.items.map((item, i) => {
                     return (
-                        <Link to={"/items/" + item.id} key={item.id} className="items">
+                        <a href={"/items/" + item.id} key={item.id} className="items">
                             <div className="contenedorImagen">
                                 <div className="imagen" style={{ background: "url(" + item.picture + ")no-repeat left", backgroundSize: "contain" }}>
 
                                 </div>
                             </div>
                             <div className="contenedorDescripcion">
-                                <p className="precio">{"$" + item.price.amount}
+                                <p className="precio">{"$" + item.precioFormat}
                                     {item.free_shipping &&
                                         <i className="imagen"></i>
                                     }
@@ -37,7 +37,7 @@ class Items extends React.Component {
                                 <p>Capital Federal</p>
                             </div>
                             <hr />
-                        </Link>)
+                        </a>)
                 })}
             </div>
         );

@@ -20,7 +20,6 @@ function getItem(id) {
             return fetch("http://localhost:4000/api/items/" + id + "/description", sentData).then(res => res.json()).then(
                 (description) => {
                     item.item.description = description.description;
-                    console.log('​getItem -> item', item);
                     return item;
                 },
                 (error) => {

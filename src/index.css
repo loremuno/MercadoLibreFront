@@ -7,12 +7,19 @@
 button{
   cursor: pointer;
 }
+hr{
+  grid-column: 1/4;
+  margin-top: 16px;
+  color: #EEEEEE4D;
+}
+a{
+  text-decoration: none;
+}
 #page {
   display: grid;
   width: 100%;
   grid-template-columns: 1fr minmax(50px, 1fr) repeat(10, 1fr);
   grid-column-gap: 16px;  
-  height: 100vh;                 
 }
 
 header {
@@ -30,11 +37,6 @@ main{
   box-sizing: border-box;
   background-color: #EEEEEE;
   grid-template-columns: inherit;
-  height: 100vh;
-}
-hr{
-  margin: 0px 16px;
-  color: #EEEEEE4D;
 }
 
 main .categoria{
@@ -52,11 +54,9 @@ main .categoria{
 
 main .items{
   height: 180px;
-  padding-bottom: 16px;
-  padding-top: 16px;
-  padding-left: 16px;
+  padding: 16px;
   display: grid;
-  grid-template: "a b c" 180px / 180px auto auto;
+  grid-template: "a b c" 180px / 180px auto 180px;
   color: #666;
   font-size: 14px;
   font-family: "Proxima Nova";
@@ -160,7 +160,6 @@ body{
 
 /*item unico*/
 main .item{
-  height: 100vh;
   display: grid;
   grid-template: "a b" 680px 
                  "c b" auto / minmax(680px,75%) ;
@@ -171,8 +170,6 @@ main .item{
 }
 .item .contenedorImagenItem .imagen{
   display: inline-block;
-  background: url(./assets/descarga.jpg) no-repeat left;
-  background-size: contain;
   width: 680px;
   height: 680px;
 }
@@ -222,4 +219,39 @@ main .item{
 .item .contenedorDescripcionItem .titulo{
   font-size: 28px;
   margin-bottom: 32px;
+}
+
+/*loader spin*/
+.loader {
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+  position: fixed;
+  left: 40%;
+  top: 40%;
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.loadingScreen{
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background-color: #1b1b1bc9;
+  width: 100%;
+  height: 100%;
 }

@@ -2,15 +2,25 @@ import React from "react";
 
 class Categoria extends React.Component {
 
+    componentWillReceiveProps(props) {
+        this.setState({
+            categories: props.categories,
+        })
+    }
+
     state = {
-        query: '',
         loading: false,
+        categories: null,
     }
 
     render() {
         return (
             <div className="categoria">
-                Electrónica, Audio y Video > iPod > Reproductores > iPod touch > 32 GB
+                {this.state.categories && this.state.categories.map(function (categorie, i) {
+                    return (
+                        <div key={i}>{categorie + " > "}</div>
+                    )
+                })}
             </div>
         );
     }

@@ -1,10 +1,38 @@
 import React from "react";
+import { getItem } from '../services/apiservices';
 
 class Item extends React.Component {
 
     state = {
-        query: '',
-        loading: false,
+        isLoaded: false,
+        item: null,
+        categories: null,
+    }
+
+    componentDidMount(props) {
+        console.log('​Item -> componentDidMount -> props', props);
+    }
+
+    search = (id) => {
+        this.setState({
+            isLoaded: false,
+        });
+        getItem(id)
+            .then(
+                (result) => {
+                    console.log('​Header -> search -> result', result);
+                    this.setState({
+                        item: result,
+                    });
+                },
+                (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    });
+                }
+            )
+
     }
 
     render() {

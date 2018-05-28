@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import BodyItem from '../src/bodyItem/bodyItem';
+import Item from '../src/item/item';
 import BodyItems from '../src/bodyItems/bodyItems';
 import Header from '../src/header/header';
 import Home from '../src/home/home';
@@ -13,7 +13,7 @@ const routes = [
   },
   {
     path: "/items/:id",
-    component: BodyItem
+    component: BodyItems,
   },
   {
     path: "/items",

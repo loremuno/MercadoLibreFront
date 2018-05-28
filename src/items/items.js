@@ -1,9 +1,9 @@
 import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class Items extends React.Component {
 
     componentWillReceiveProps(props) {
-        console.log('​Items -> componentWillReceiveProps -> props', props);
         this.setState({
             items: props.items,
         })
@@ -17,9 +17,9 @@ class Items extends React.Component {
     render() {
         return (
             <div className="contenedor">
-                {this.state.items && this.state.items.map(function (item, i) {
+                {this.state.items && this.state.items.map((item, i) => {
                     return (
-                        <div key={item.id} className="items">
+                        <Link to={"/items/" + item.id} key={item.id} className="items">
                             <div className="contenedorImagen">
                                 <div className="imagen" style={{ background: "url(" + item.picture + ")no-repeat left", backgroundSize: "contain" }}>
 
@@ -36,7 +36,8 @@ class Items extends React.Component {
                             <div className="contenedorUbicacion">
                                 <p>Capital Federal</p>
                             </div>
-                        </div>)
+                            <hr />
+                        </Link>)
                 })}
             </div>
         );

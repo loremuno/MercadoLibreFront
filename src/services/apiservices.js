@@ -14,4 +14,24 @@ function getItems(query) {
     return fetch("http://localhost:4000/api/items?q=" + query, sentData)
 }
 
-export { getItems }
+function getItem(id) {
+    return fetch("http://localhost:4000/api/items/" + id, sentData).then(res => res.json()).then(
+        (item) => {
+            return fetch("http://localhost:4000/api/items/" + id + "/description", sentData).then(res => res.json()).then(
+                (description) => {
+                    item.item.description = description.description;
+                    console.log('​getItem -> item', item);
+                    return item;
+                },
+                (error) => {
+                    console.log('​getItem -> error', error);
+                }
+            )
+        },
+        (error) => {
+            console.log('​getItem -> error', error);
+        }
+    )
+}
+
+export { getItems, getItem }

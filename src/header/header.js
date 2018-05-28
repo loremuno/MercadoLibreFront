@@ -1,8 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-import createHistory from "history/createBrowserHistory"
-
-const history = createHistory()
 
 class Header extends React.Component {
 
@@ -19,7 +16,7 @@ class Header extends React.Component {
                         query: event.target.value
                     })
                 }} type="text" placeholder="Nunca dejes de buscar" />
-                <Link className="boton" to={"/items?search="+this.state.query}></Link>
+                <Link className="boton" to={"/items?search=" + this.state.query}></Link>
             </header>
         );
     }
